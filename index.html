@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/gh/mayognaise/aframe-mouse-cursor-component@master/dist/aframe-mouse-cursor-component.min.js"></script>
     <script src="FileSaver.min.js"></script>
     <script src="object-watch.js"></script>
+    <link rel="stylesheet" type='text/css' href = "stylesheet.css">
     <title>Konigsberg-2</title>
   </head>
   <body>
@@ -22,31 +23,42 @@
         </a-entity>
 
 
-    <a-entity id = 'camParent' rotation="0 0 0">
-        <a-camera wasd-controls="easing: 15; fly: true" position = "0 1 2" rotation="45 45 45">
-            	
-                <a-cursor></a-cursor>
-        </a-camera>
-    </a-entity>
-
-
+        <a-entity id = 'camParent' rotation="0 0 0">
+            <a-camera wasd-controls="easing: 15; fly: true" position = "0 1 2" rotation="45 45 45">
+                	
+                    <a-cursor></a-cursor>
+            </a-camera>
+        </a-entity>
     </a-scene>
-
-        <div id="menu">
+    <div id="menu">
         <div id="build">
-            <button type="button" id ='add'>Add Node</button>
-            <button type="button"> Delete Node</button>
-            <button type="button">Delete Edge</button>
-            <!--<button type="button" onclick="console.log(graph)">clog(graph)</button>-->
-        </div>
-        <div>
-            <button type="button" onclick="genTextFile()">Export This Graph</button>
-            <button type="button" onclick="toggleXYZ()">Toggle X|Y|Z </button>
-            <button type="button" onclick="toggleGrnd()">Toggle Ground </button>
-        </div>
-        <div id='Import'>
-            <button type="button" onclick="showUploadButton()">Import New Graph</button>
+            <div id = 'tab'>
+            <table id="toggleMenu" width='30%' align="center">
+                <tr>
+                    <td class = 'brdr' id ='ctrl'> <button onclick = "window.open('https://github.com/Zysberg/K-2')">Controls</button></td>
+                    <td class = 'brdr' id='addNode'>Add Node</td>
+                    <td class = 'brdr' id='addEdge'>Add Edge</td>
+                    <td class = 'brdr' id='export'><button type="button" onclick="genTextFile()">Export Current</button></td>
+
+                </tr>
+                <tr>
+                    <td class = 'brdr' id='biDir'>Bidirectional Edges</td>
+                    <td class = 'brdr' id='delNode'>Delete Node</td>
+                    <td class = 'brdr' id='delEdge'>Delete Edge</td>
+                    <td class = 'brdr' id='import'><button type="button" onclick="showUploadButton()">Import New</button></td>
+
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td class = 'brdr' >X | Y | Z</td>
+                    <td class = 'brdr' >Ground</td>
+                    <td class = 'brdr' >Edge Animations</td>
+                    <td class = 'hide' id='importFile'></td>
+                </tr>
+            </table>
             <input type="file" class ="showAfterClick" id="openFile" onchange="impTextFile()" />
+            </div>
+            <!--<button type="button" onclick="console.log(graph)">clog(graph)</button>-->
         </div>
     </div>
   </body>
