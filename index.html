@@ -33,26 +33,17 @@
     <div id="menu">
         <div id="build">
             <div id = 'tab'>
-            <table id="toggleMenu" width='30%' align="center">
+            <table id="toggleMenu" align="center">
                 <tr>
-                    <td class = 'brdr' id ='ctrl'> <button onclick = "window.open('https://github.com/Zysberg/K-2')">Controls</button></td>
-                    <td class = 'brdr' id='addNode'>Add Node</td>
-                    <td class = 'brdr' id='addEdge'>Add Edge</td>
-                    <td class = 'brdr' id='export'><button type="button" onclick="genTextFile()">Export Current</button></td>
-
+                    <td class = 'brdr' id='xyz'>X | Y | Z</td>
+                    <td class = 'brdr' id='grnd'>Ground</td>
+                    <td class = 'brdr' id='edgeAni'>Edge Animations</td>
+                    <td class = 'brdr' id='biDir'>Undirected Edges</td>
                 </tr>
                 <tr>
-                    <td class = 'brdr' id='biDir'>Bidirectional Edges</td>
-                    <td class = 'brdr' id='delNode'>Delete Node</td>
-                    <td class = 'brdr' id='delEdge'>Delete Edge</td>
+                    <td class = 'brdr'> <button onclick = "window.open('https://github.com/Zysberg/K-2')">Controls</button></td>
+                    <td class = 'brdr'><button type="button" onclick="genTextFile()">Export Current</button></td>
                     <td class = 'brdr' id='import'><button type="button" onclick="showUploadButton()">Import New</button></td>
-
-                </tr>
-                <tr></tr>
-                <tr>
-                    <td class = 'brdr' >X | Y | Z</td>
-                    <td class = 'brdr' >Ground</td>
-                    <td class = 'brdr' >Edge Animations</td>
                     <td class = 'hide' id='importFile'></td>
                 </tr>
             </table>
@@ -63,6 +54,7 @@
     </div>
   </body>
   	  <script src = "vars.js"></script>
+      <script src = "UI.js"></script>
       <script src = "controls.js"></script>
   	  <script src = "nodeManager.js"></script>
       <script src = "edgeManager.js"></script>

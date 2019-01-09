@@ -1,7 +1,3 @@
-document.querySelector('#add').onclick = function(){
-addN0de();
-};
-
 function addNodeMode(addNode){
 	if (addNode){
 		cursorEl.setAttribute('visible','false');
