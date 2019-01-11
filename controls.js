@@ -14,19 +14,23 @@ document.addEventListener('keypress', event=>{
 			edgeAni = !edgeAni; toggleCSS('edgeAni');
 			break;
 		case 'i':
-			rOt.x+=6;
+			calibrateLocalRotate(); 
+			rOt.x+=4;
 			camParentEl.setAttribute('rotation',pathParse(rOt));
 			break;
-		case 'k': 
-			rOt.x-=6;
+		case 'k':
+			calibrateLocalRotate(); 
+			rOt.x-=4;
 			camParentEl.setAttribute('rotation',pathParse(rOt));
 			break;  
 		case 'j':
-			rOt.y+=6;
+			calibrateLocalRotate();
+			rOt.y+=4;
 			camParentEl.setAttribute('rotation',pathParse(rOt));
 			break;
 		case 'l':
-			rOt.y-=6;
+			calibrateLocalRotate();
+			rOt.y-=4;
 			camParentEl.setAttribute('rotation',pathParse(rOt));
 			break;
 		case '=':

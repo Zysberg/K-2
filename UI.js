@@ -8,6 +8,12 @@ function Pos(){return worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWor
 
 function Rot(){return camParentEl.getAttribute('rotation');}
 
+function calibrateLocalRotate(){
+	camParentEl.setAttribute('position',Pos());
+	cameraEl.setAttribute('position',{x:0,y:0,z:0});
+}
+
+
 function toggleCSS(Str){
 	switch(Str){
 		case 'biDir':
