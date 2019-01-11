@@ -43,15 +43,23 @@ function deleteNode(){
         var delNodeHTML = document.querySelector('.HIGHLIGHT');
         var nodeID = delNodeHTML.getAttribute('id');
         console.log(nodeID);
+        console.log(adjList[nodeID]);
+        var nodeIDx = -1;
 
-        for (n in adjList[nodeID]){
-            for(a in adjList[n]){
-                if (a==nodeID){delete a};
-            }
-        }
         delete adjList[nodeID];
         delete nodes[nodeID];
+/////////////////////////////////////
 
+
+        // for (n in adjList){
+        //     console.log(n)
+        //     for (var i =0;i<adjList[n].size;i++){
+        //         console.log(adjList[n].get());
+        //         if (adjList[n][i]==nodeID){adjList[n].splice(i,1);break;}
+        //     }
+        // }
+
+        /////////////////////////////////////////
         for (var i = 0; i<graphEl.children.length;i++){
             elem = graphEl.children[i];
             if(elem.getAttribute('id').includes(nodeID)){
