@@ -3,61 +3,77 @@
   <head>
     <meta charset="UTF-8">
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/andreasplesch/aframe-meshline-component@master/dist/aframe-meshline-component.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/andreasplesch/aframe-meshline-component@master/dist/aframe-meshline-component.min.js"></script> -->
+        <script src="https://rawgit.com/andreasplesch/aframe-meshline-component/master/dist/aframe-meshline-component.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/mayognaise/aframe-mouse-cursor-component@master/dist/aframe-mouse-cursor-component.min.js"></script>
     <script src="FileSaver.min.js"></script>
-    <script src="object-watch.js"></script>
     <link rel="stylesheet" type='text/css' href = "stylesheet.css">
     <title>Konigsberg-2</title>
   </head>
   <body>
-  	<a-scene embedded>
+  	<a-scene z-index = '-1' embedded >
 
         <a-sky color="#87CEFA"></a-sky>
 
         <a-plane rotation="-90 0 0" visible="false" width="255" height="255" color="#7BC8A4"></a-plane>
+
         <a-entity id="axes" visible="true">
             <a-box id="green" color="green" position="0 0 0" rotation="90 0 0" scale=".1 .1 255"></a-box>
             <a-box color="red" position="0 0 0" rotation="0 90 0" scale=".1 .1 255"></a-box>
             <a-box color="blue" position="0 0 0" rotation="0 0 90" scale=".1 .1 255"></a-box>
         </a-entity>
 
-
-        <a-entity id = 'camParent' rotation="0 0 0">
-            <a-camera wasd-controls="easing: 15; fly: true" position = "0 1 2" rotation="45 45 45">
+        <a-entity id = 'camParent'>
+            <a-camera wasd-controls="easing: 15; fly: true" position = "0 1 2" rotation="0 0 0">
                 	
                     <a-cursor></a-cursor>
             </a-camera>
         </a-entity>
+        <a-entity id='graph'>
+            
+        </a-entity>
     </a-scene>
-    <div id="menu">
-        <div id="build">
-            <div id = 'tab'>
-            <table id="toggleMenu" align="center">
+    <div id="menu" >
+            <div id = 'tab' >
+            <table id="toggleMenu" >
                 <tr>
-                    <td class = 'brdr' id='xyz'>X | Y | Z</td>
-                    <td class = 'brdr' id='grnd'>Ground</td>
-                    <td class = 'brdr' id='edgeAni'>Edge Animations</td>
+                    <td class = 'brdr' id = 'nA'></td>
+                    <td id='edgedeco'><font size='5px'>&#x2192;</font></td>
+                    <td class = 'brdr' id = 'nB'></td>
+                    <td id='space'></td>
+                    <td class = 'brdr' id = 'addE'>Add Edge</td>
+                    <td class = 'brdr' id = 'add'>Add Node</td>
+                    <td id = 'space'></td>
                     <td class = 'brdr' id='biDir'>Undirected Edges</td>
+                    <td class = 'brdr' id='xyz'>X | Y | Z</td>
+                    <td id='space' colspan="1"></td>
+                    <td class = 'brdr' id = 'tdctrl' rowspan='2' height = '100%'>
+                        <a href = 'https://github.com/Zysberg/K-2' target="_blank"><div id='dummyButton'><p>Controls</p></div></a> 
+                    </td>
+                    <td id='space' colspan="1"></td>
+                    <td class = 'brdr'><button type="button" onclick="genTextFile()">Export Current</button></td>
                 </tr>
                 <tr>
-                    <td class = 'brdr'> <button onclick = "window.open('https://github.com/Zysberg/K-2')">Controls</button></td>
-                    <td class = 'brdr'><button type="button" onclick="genTextFile()">Export Current</button></td>
-                    <td class = 'brdr' id='import'><button type="button" onclick="showUploadButton()">Import New</button></td>
+                    <td id='space' colspan="4"></td>
+                    <td class = 'brdr' id = 'delE'>Del Edge</td>                   
+                    <td class = 'brdr' id = 'del'>Del Node</td>
+                    <td id='space' colspan="1"></td>
+                    <td class = 'brdr' id='edgeAni'>Edge Animations</td>
+                    <td class = 'brdr' id='grnd'>Ground</td>
+                    <td id='space' colspan="1"></td>
+                    <td id='space' colspan="1"></td>
+                    <td class = 'brdr' class = 'no-break-out' id='import'><button type="button" onclick="showUploadButton()">Import New</button></td>
                     <td class = 'hide' id='importFile'></td>
                 </tr>
             </table>
-            <input type="file" class ="showAfterClick" id="openFile" onchange="impTextFile()" />
+            <input hidden type="file" class ="showAfterClick" id="openFile" onchange="impTextFile()" />
             </div>
             <!--<button type="button" onclick="console.log(graph)">clog(graph)</button>-->
-        </div>
     </div>
   </body>
   	  <script src = "vars.js"></script>
       <script src = "UI.js"></script>
-      <script src = "controls.js"></script>
-  	  <script src = "nodeManager.js"></script>
+      <script src = "nodeManager.js"></script>
       <script src = "edgeManager.js"></script>
-
-
+      <script src = "controls.js"></script>
 </html>

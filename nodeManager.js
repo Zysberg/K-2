@@ -1,31 +1,48 @@
-function addNodeMode(addNode){
-	if (addNode){
-		cursorEl.setAttribute('visible','false');
-		return;
-	}
-	cursorEl.setAttribute('visible','true');
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    if (color == '55575b' || color == 'FFFFFF') {
+        return getRandomColor();
+    }
+    return color;
 }
+
+function nodeLabelExists(label){
+	for(vars in nodes){if (label==vars){return true;}}
+		return false;
+}
+
 
 function addN0de(){
-	var label = prompt("Enter Label for Node","-------");
-	if (label=="-------"||((Object.keys(nodes).size!=0)&&label in nodes)||label.charAt(0)==('!')){console.log("Invalid Input"); return;}
-	var color = getRandomColor();
+	cnt++;
+	var label = 'n'+cnt; //prompt()
+	var color = 'white'; //getRandomColor();
 	var node = document.createElement("a-sphere");
-	var pos = Pos();
+	var pos = (pos == null) ? sceneEl.querySelector('a-camera').getAttribute('position') : pos;
 	setAttributes(node,{'id':label,'color':color,'position':pos,'radius':'.5'});
-	sceneEl.appendChild(node);
-	nodes[label] = pos;
-    adjList[label] = [];
+	addEvents(node,color);
 
-	// if (nodes.size>2){
-	//    for(vars in nodes){
-	// 	  console.log(vars);
-	//    	   console.log(nodes[vars]);
-	//    }
- //    }
+
+	nodes[label] = {Pos:node.getAttribute('position'),Color:color};
+    adjList[label] = [];
+    graphEl.appendChild(node);
 }
 
-function deleteNode(label){
+function addEvents(aNode,color){
+	aNode.onmouseenter = function(){
+		if(!del){this.setAttribute('color','#e6e600');this.setAttribute('class','HIGHLIGHT');}else{this.setAttribute('color','#ff275d');}}
+	aNode.onmouseleave=function(){this.setAttribute('color',color);this.removeAttribute("class")};
+	aNode.onclick =function(){  if(del){deleteNode(aNode);}}
+}
+
+
+function deleteNode(node){
+	label = node.getAttribute('id');
+	console.log(adjList);
+	console.log(nodes);
     for (adj in adjList[label]){
         for (n in adjList[adj]){
             if (n==label){
@@ -33,12 +50,15 @@ function deleteNode(label){
             }
         }
     }
+    console.log("---");
+    console.log(adjList);
+	console.log(nodes);
     delete adjList[label];
     delete nodes[label];
-    for (var i =0; i<sceneEl.childNodes.length;i++){
-        if (sceneEl.childNodes[i].getAttribute('id').includes(label)){
-            delete sceneEl.childNodes[i];
-            sceneEl.removeChild(sceneEl.childNodes[i]);
+    for (var i =0; i<graphEl.children.length;i++){
+    	console.log(graphEl.children[i]);
+        if (graphEl.children[i].getAttribute('id').includes(label)){
+        	graphEl.removeChild(graphEl.children[i]);
             i--;
         }
     }

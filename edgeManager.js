@@ -1,38 +1,39 @@
-function addEdge(node1,node2,biDir){
-        if (node1 == node2 || node1 == null || node2==null) {console.log("Cannot make self-loops"); return;}
-        if(adjList[node1].includes(node2)){console.log(node1+"->"+node2+" already exists."); return;}
-        if (!adjList[node1].includes(node2)){
-            adjList[node1].push(node2);
-            var Pos1 = nodes[node1], Pos2 = nodes[node2];
-            var edge = document.createElement('a-entity');
-            setAttributes(edge,{'id':node1+"-"+node2,
-                          'meshline':{ path: Pos1.x + " " + Pos1.y + " " + Pos1.z + " ," + Pos2.x + " " + Pos2.y + " " + Pos2.z,
-                                            lineWidth: 10,
-                                            lineWidthStyler: 1,
-                                            color: '#55575b'
-                                         }});
-            sceneEl.appendChild(edge);       
-            if (biDir){
-                addEdge(node2,node1,false);
-            }
-            directionAnimationSquare(node1,node2,edge);
-            edge.appendChild(selectEdgeSquare(nodes[node1],nodes[node2]));
-            sceneEl.appendChild(edge);
-        }
+function pathParse(p){
+    return p.x + " " + p.y + " " + p.z;
 }
 
-function directionAnimationSquare(node1,node2,edgeEl){
+
+function addEdge(An, Bn,biDir){
+        if(contains(adjList[An],Bn)){console.log(nodeA+"->"+nodeB+" already exists.");}
+        else{
+            var n0 = nodes[An]['Pos'], n1 = nodes[Bn]['Pos'];
+            var edgeEl = document.createElement('a-entity');
+            var pAth = pathParse(n0)+" ,"+pathParse(n1);
+            setAttributes(edgeEl,{'id':An+"-"+Bn,'meshline': { path:pAth,lineWidth: 10,lineWidthStyler: 1,color: '#55575b'}});
+            addDirAniSquare(n0,n1,edgeEl,An+"-"+Bn);
+            //selectEdgeSquare
+            graphEl.appendChild(edgeEl);
+            adjList[An].push(Bn);
+        }
+        if(biDir){addEdge(Bn,An,false);}
+        nodeA=null;
+        nodeB=null;
+        return;
+}
+
+function addDirAniSquare(fRom,tO,edgeEl,iD){
     var box1 = document.createElement('a-box');
-    setAttributes(box1,{'id':node1+"-"+node2,'color':'white','position':nodes[node1],'height':'.25','width':'.25','depth':'.25'});
     var motion = document.createElement('a-animation');
-    setAttributes(motion,{'class':'dir','attribute':'position','dur':3000,'from':nodes[node1],'to':nodes[node2],'repeat':'indefinite'});
+    setAttributes(box1,{'id':'!'+iD,'color':'#66FF00','height':'.25','width':'.25','depth':'.25','position':fRom});
+    setAttributes(motion,{'attribute':'position','dur':3000,'from':pathParse(fRom),'to':pathParse(tO),'repeat':'indefinite'});
     box1.appendChild(motion);
     edgeEl.appendChild(box1);
+    //if this doesnt work as planned, have from = 0,0,0 and to = frOm-tO (in order to be with respect  topoint)
 }
 
-function selectEdgeSquare(Pos1,Pos2){
-    var one4 = calcFracDist(Pos1,Pos2,4);
-    var one3 = calcFracDist(Pos1,Pos2,3);
+function selectEdgeSquare(Pos1,Pos2,node1,node2){
+    var one4 = pathParse(calcFracDist(Pos1,Pos2,4));
+    var one3 = pathParse(calcFracDist(Pos1,Pos2,3));
     var boxS = document.createElement('a-box');
     setAttributes(boxS,{'id':'!'+node1+"-"+node2,'visible':'false','color':'white','position':one4,'height':'.5','width':'.5','depth':'.5','p4':one4,'p3':one3});
     boxS.addEventListener("mouseenter",function(event){
@@ -42,9 +43,8 @@ function selectEdgeSquare(Pos1,Pos2){
         setAttributes(boxSa,{'class':'dir','attribute':'position','dur':1500,'from':p4,'to':p3,'repeat':'indefinite'});
         boxS.appendChild(boxSa);
     });
-    boxS.addEventListener('')
 
-    boxS.addEventListener('mouseout',function(event){boxS.removeChild(boxS.firstChild);});
+    boxS.addEventListener('mousel-',function(event){boxS.removeChild(boxS.firstChild);});
     return boxS;
 }
 
