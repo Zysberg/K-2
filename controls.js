@@ -34,7 +34,7 @@ document.addEventListener('keypress', event=>{
 			camParentEl.setAttribute('rotation',pathParse(rOt));
 			break;
 		case '=':
-		if (del==true){ del=false;  toggleCSS('del');console.log(window.innerWidth)}
+		if (del==true){ del=false;  toggleCSS('del');}
 		else{addN0de();}
 			break;
 		case '-':
@@ -51,7 +51,7 @@ document.addEventListener('keypress', event=>{
 			if (nodeA!=null&&nodeB!=null){if(checkEdges()){addEdge(nodeA,nodeB,biDir);nodeA=null;nodeB=null;}}
 			break;
 		case '\\':
-		//toggle delete edge modevb
+			if(del){deleteNode();}
 			break;
 		case 'q':
 			cameraEl.setAttribute('position',{x:0,y:1,z:2});

@@ -27,35 +27,39 @@ function addN0de(){
 	nodes[label] = {Pos:node.getAttribute('position'),Color:color};
     //node.setAttribute('position',pathParse(nodes[label].Pos));
     adjList[label] = [];
-    sceneEl.appendChild(node);
+    graphEl.appendChild(node);
 }
 
 function addEvents(aNode,color){
 	aNode.onmouseenter = function(){
-		if(!del){this.setAttribute('color','#e6e600');this.setAttribute('class','HIGHLIGHT');}else{this.setAttribute('color','#ff275d');}}
-	aNode.onmouseleave=function(){this.setAttribute('color',color);this.removeAttribute("class")};
+		this.setAttribute('class','HIGHLIGHT'); if(!del){this.setAttribute('color','#e6e600');}else{delNode = aNode.getAttribute('id'); this.setAttribute('color','#ff275d');}}
+	aNode.onmouseleave=function(){label = null; this.setAttribute('color',color);this.removeAttribute("class")};
 	aNode.onclick =function(){  if(del){deleteNode(aNode);}}
 }
 
 
-function deleteNode(node){
-	label = node.getAttribute('id');
-	console.log(adjList);
-	console.log(nodes);
-    for (adj in adjList[label]){
-        for (n in adjList[adj]){
-            if (n==label){
-                delete n;
+function deleteNode(){
+    if (document.querySelector('.HIGHLIGHT')){
+        var delNodeHTML = document.querySelector('.HIGHLIGHT');
+        var nodeID = delNodeHTML.getAttribute('id');
+        console.log(nodeID);
+
+        for (n in adjList[nodeID]){
+            for(a in adjList[n]){
+                if (a==nodeID){delete a};
+            }
+        }
+        delete adjList[nodeID];
+        delete nodes[nodeID];
+
+        for (var i = 0; i<graphEl.children.length;i++){
+            elem = graphEl.children[i];
+            if(elem.getAttribute('id').includes(nodeID)){
+                graphEl.removeChild(graphEl.children[i]);
+                i--;
             }
         }
     }
-    delete adjList[label];
-    delete nodes[label];
-    for (var i =0; i<sceneEl.children.length;i++){
-    	console.log(sceneEl.children[i]);
-        if (sceneEl.children[i].getAttribute('id').includes(label)){
-        	sceneEl.removeChild(graphEl.children[i]);
-            i--;
-        }
-    }
+    else{console.log("No node detected.")}
 }
+

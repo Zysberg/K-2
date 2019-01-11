@@ -14,6 +14,7 @@ var adjMatrix = {};
 var nodes = [];
 
 var del = false;
+var delNode = null;
 var nodeA = null;
 var nodeB = null;
 var cnt = 0;
@@ -48,3 +49,5 @@ function parsePath(p){
 	path = p.split(' ');
 	return {x:path[0],y:path[1],z:path[2]};
 }
+
+
