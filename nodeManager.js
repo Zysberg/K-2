@@ -49,15 +49,12 @@ function deleteNode(node){
             }
         }
     }
-    console.log("---");
-    console.log(adjList);
-	console.log(nodes);
     delete adjList[label];
     delete nodes[label];
-    for (var i =0; i<graphEl.children.length;i++){
-    	console.log(graphEl.children[i]);
-        if (graphEl.children[i].getAttribute('id').includes(label)){
-        	graphEl.removeChild(graphEl.children[i]);
+    for (var i =0; i<sceneEl.children.length;i++){
+    	console.log(sceneEl.children[i]);
+        if (sceneEl.children[i].getAttribute('id').includes(label)){
+        	sceneEl.removeChild(graphEl.children[i]);
             i--;
         }
     }
