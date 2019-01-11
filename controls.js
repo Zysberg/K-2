@@ -1,4 +1,5 @@
 document.addEventListener('keypress', event=>{
+	var rOt = Rot();
 	switch(event.key){
 		case 'y':
 			xyz = !xyz; toggleCSS('xyz');toggleXYZ();
@@ -11,6 +12,22 @@ document.addEventListener('keypress', event=>{
 			break;
 		case 'g':
 			edgeAni = !edgeAni; toggleCSS('edgeAni');
+			break;
+		case 'i':
+			rOt.x+=6;
+			camParentEl.setAttribute('rotation',pathParse(rOt));
+			break;
+		case 'k': 
+			rOt.x-=6;
+			camParentEl.setAttribute('rotation',pathParse(rOt));
+			break;  
+		case 'j':
+			rOt.y+=6;
+			camParentEl.setAttribute('rotation',pathParse(rOt));
+			break;
+		case 'l':
+			rOt.y-=6;
+			camParentEl.setAttribute('rotation',pathParse(rOt));
 			break;
 		case '=':
 		if (del==true){ del=false;  toggleCSS('del');console.log(window.innerWidth)}
@@ -40,5 +57,5 @@ document.addEventListener('keypress', event=>{
 		}
 	});
 
-sceneEl.onmousedown = function(){console.log(cameraEl.getAttribute('rotation'))};
-sceneEl.onmouseup = function(){console.log(cameraEl.getAttribute('rotation'))};
+// sceneEl.onmousedown = function(){console.log(cameraEl.getAttribute('rotation'))};
+// sceneEl.onmouseup = function(){console.log(cameraEl.getAttribute('rotation'))};

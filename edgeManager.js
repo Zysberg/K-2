@@ -1,7 +1,3 @@
-function pathParse(p){
-    return p.x + " " + p.y + " " + p.z;
-}
-
 
 function addEdge(An, Bn,biDir){
         if(contains(adjList[An],Bn)){console.log(nodeA+"->"+nodeB+" already exists.");}
@@ -12,7 +8,7 @@ function addEdge(An, Bn,biDir){
             setAttributes(edgeEl,{'id':An+"-"+Bn,'meshline': { path:pAth,lineWidth: 10,lineWidthStyler: 1,color: '#55575b'}});
             addDirAniSquare(n0,n1,edgeEl,An+"-"+Bn);
             //selectEdgeSquare
-            graphEl.appendChild(edgeEl);
+            sceneEl.appendChild(edgeEl);
             adjList[An].push(Bn);
         }
         if(biDir){addEdge(Bn,An,false);}

@@ -21,14 +21,13 @@ function addN0de(){
 	var label = 'n'+cnt; //prompt()
 	var color = 'white'; //getRandomColor();
 	var node = document.createElement("a-sphere");
-	var pos = (pos == null) ? sceneEl.querySelector('a-camera').getAttribute('position') : pos;
+	var pos = (pos == null) ? Pos() : pos;
 	setAttributes(node,{'id':label,'color':color,'position':pos,'radius':'.5'});
 	addEvents(node,color);
-
-
 	nodes[label] = {Pos:node.getAttribute('position'),Color:color};
+    //node.setAttribute('position',pathParse(nodes[label].Pos));
     adjList[label] = [];
-    graphEl.appendChild(node);
+    sceneEl.appendChild(node);
 }
 
 function addEvents(aNode,color){

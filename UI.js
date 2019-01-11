@@ -4,7 +4,9 @@ canvasResize();
 
 function canvasResize(){sceneEl.style.width = window.innerWidth+"px";sceneEl.style.height = (window.innerHeight*.75)+"px";}
 
-function Pos(){return cameraEl.getAttribute('position');}
+function Pos(){return worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);}
+
+function Rot(){return camParentEl.getAttribute('rotation');}
 
 function toggleCSS(Str){
 	switch(Str){

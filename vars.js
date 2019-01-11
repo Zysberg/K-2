@@ -24,6 +24,9 @@ var grnd = false;
 var edgeAni = false;
 var meshObj ={ path:null,lineWidth: 10,lineWidthStyler: 1,color: '#55575b'};
 
+var worldPos = new THREE.Vector3();
+worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
+
 function setAttributes(el, attrs){
     for (var key in attrs){
         el.setAttribute(key,attrs[key]);
@@ -37,3 +40,11 @@ function contains(arr, el){
 	return false;
 }
 
+function pathParse(p){
+    return p.x + " " + p.y + " " + p.z;
+}
+
+function parsePath(p){
+	path = p.split(' ');
+	return {x:path[0],y:path[1],z:path[2]};
+}
