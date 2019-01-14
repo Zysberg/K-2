@@ -63,6 +63,7 @@ function showUploadButton(){
 
 function checkEdges(){
 	col = (nodeA==nodeB) ?  '#ff275d': '#99cc00';
+	for (var k = 0; k<adjList[nodeA].length;k++){ if (adjList[nodeA][k] === nodeB){col= '#ff275d';break;}}
 	nA.innerText = ""; nB.innerText="";
 	nA.style.backgroundColor = col;nB.style.backgroundColor = col;
 	setTimeout(function(){nA.style.backgroundColor = 'white';nB.style.backgroundColor = 'white';},1000);

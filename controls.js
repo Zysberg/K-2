@@ -60,6 +60,3 @@ document.addEventListener('keypress', event=>{
 			break;	
 		}
 	});
-
-// sceneEl.onmousedown = function(){console.log(cameraEl.getAttribute('rotation'))};
-// sceneEl.onmouseup = function(){console.log(cameraEl.getAttribute('rotation'))};

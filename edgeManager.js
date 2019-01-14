@@ -1,20 +1,20 @@
 
 function addEdge(An, Bn,biDir){
-        if(contains(adjList[An],Bn)){console.log(nodeA+"->"+nodeB+" already exists.");}
-        else if(An==Bn){console.log("No self-loops!");}
-        else{
-            var n0 = nodes[An]['Pos'], n1 = nodes[Bn]['Pos'];
-            var edgeEl = document.createElement('a-entity');
-            var pAth = pathParse(n0)+" ,"+pathParse(n1);
-            setAttributes(edgeEl,{'id':An+"-"+Bn,'meshline': { path:pAth,lineWidth: 10,lineWidthStyler: 1,color: '#55575b'}});
-            addSquares(n0,n1,edgeEl,An+"-"+Bn);
-            graphEl.appendChild(edgeEl);
-            adjList[An].push(Bn);
-        }
-        if(biDir){addEdge(Bn,An,false);}
-        nodeA=null;
-        nodeB=null;
-        return;
+    for (var k = 0; k<adjList[An].length;k++){ if (adjList[An][k] === Bn){console.log(nodeA+"->"+nodeB+" already exists."); return;}}
+
+    if(An==Bn){console.log("No self-loops!");return;}
+
+    var n0 = nodes[An]['Pos'], n1 = nodes[Bn]['Pos'];
+    var edgeEl = document.createElement('a-entity');
+    var pAth = pathParse(n0)+" ,"+pathParse(n1);
+    setAttributes(edgeEl,{'id':An+"-"+Bn,'meshline': { path:pAth,lineWidth: 10,lineWidthStyler: 1,color: '#55575b'}});
+    addSquares(n0,n1,edgeEl,An+"-"+Bn);
+    graphEl.appendChild(edgeEl);
+    adjList[An].push(Bn);
+    if(biDir){addEdge(Bn,An,false);}
+    nodeA=null;
+    nodeB=null;
+    return;
 }
 
 function addSquares(fRom,tO,edgeEl,iD){

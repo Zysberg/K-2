@@ -7,11 +7,10 @@ var importGraph = document.querySelector("#openFile");
 var nA = document.querySelector('#nA');
 var nB = document.querySelector('#nB');
 
-var map = {};
-
+var graph = {};
 var adjList = {};
 var adjMatrix = {};
-var nodes = [];
+var nodes = {};
 
 var del = false;
 var delNode = null;
