@@ -53,13 +53,6 @@ function toggleGrnd() {
     else {     axisEl.setAttribute("visible", "true"); }
 }
 
-function showUploadButton(){
-	document.querySelector('#importFile').appendChild(importGraph);
-	document.querySelector('#importFile').removeAttribute('class');
-	importGraph.removeAttribute('hidden');
-
-	importGraph.value = null;
-}
 
 function checkEdges(){
 	col = (nodeA==nodeB) ?  '#ff275d': '#99cc00';

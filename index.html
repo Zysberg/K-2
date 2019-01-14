@@ -37,8 +37,7 @@
                     <td id='edgedeco'><font size='5px'>&#x2192;</font></td>
                     <td class = 'brdr' id = 'nB'></td>
                     <td id='space'></td>
-                    <td class = 'brdr' id = 'addE'>Add Edge</td>
-                    <td class = 'brdr' id = 'add'>Add Node</td>
+                    <td class = 'brdr' id = 'add'>Draw</td>
                     <td id = 'space'></td>
                     <td class = 'brdr' id='biDir'>Undirected Edges</td>
                     <td class = 'brdr' id='xyz'>X | Y | Z</td>
@@ -50,19 +49,21 @@
                     <td class = 'brdr'><button type="button" onclick="genTextFile()">Export Current</button></td>
                 </tr>
                 <tr>
-                    <td id='space' colspan="4"></td>
-                    <td class = 'brdr' id = 'delE'>Del Edge</td>                   
-                    <td class = 'brdr' id = 'del'>Del Node</td>
+                    <td id='space' colspan="4"></td>                
+                    <td class = 'brdr' id = 'del'>Delete</td>
                     <td id='space' colspan="1"></td>
                     <td class = 'brdr' id='edgeAni'>Edge Animations</td>
                     <td class = 'brdr' id='grnd'>Ground</td>
                     <td id='space' colspan="1"></td>
                     <td id='space' colspan="1"></td>
-                    <td class = 'brdr' class = 'no-break-out' id='import'><button type="button" onclick="showUploadButton()">Import New</button></td>
-                    <td class = 'hide' id='importFile'></td>
+                    <td class = 'brdr' class = 'no-break-out' id='import'>
+                        <button type="button" onclick="showUploadButton()">Import New</button>
+                    </td>
+                    <td>
+                        <input style="visibility:hidden" type="file" id="openFile" onchange="impTextFile()" />
+                    </td>
                 </tr>
             </table>
-            <input hidden type="file" class ="showAfterClick" id="openFile" onchange="impTextFile()" />
             </div>
             <!--<button type="button" onclick="console.log(graph)">clog(graph)</button>-->
     </div>
