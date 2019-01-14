@@ -42,14 +42,18 @@ function deleteNode(){
     if (document.querySelector('.HIGHLIGHT')){
         var delNodeHTML = document.querySelector('.HIGHLIGHT');
         var nodeID = delNodeHTML.getAttribute('id');
-        for (var i=0; i<adjList[nodeID].length;i++){
-            for (var j=0;j<adjList[adjList[nodeID][i]].length;j++){
-                if(adjList[adjList[nodeID][i]][j]==nodeID){adjList[adjList[nodeID][i]].splice(j,1); break;}
-            }
-        }
 
         delete adjList[nodeID];
         delete nodes[nodeID];
+
+       for (var i in adjList){
+            for (var j = 0; j<adjList[i].length;j++){
+                if (adjList[i][j]==nodeID){
+                    adjList[i].splice(j,1);
+                }
+            }
+        }
+
 
         for (var i = 0; i<graphEl.children.length;i++){
             elem = graphEl.children[i];
