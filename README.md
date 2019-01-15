@@ -7,7 +7,7 @@ Graphs are formally defined as a series of of objects that share relations. Thes
 
 ###### 
 
-Demo available [here](https://zysberg.github.io/Demos/K-2/index.html).
+Demo available [here](https://zysberg.github.io/K-2/index.html).
 
 ## Controls
 
