@@ -16,17 +16,16 @@ function nodeLabelExists(label){
 }
 
 
-function addN0de(){
+function addN0de(lAbel){
 	cnt++;
-	var label = 'n'+cnt; //prompt()
+	var label = (lAbel===null) ? 'n'+cnt:lAbel; //prompt()
 	var color = 'white'; //getRandomColor();
 	var node = document.createElement("a-sphere");
-	var pos = (pos == null) ? Pos() : pos;
+	var pos = (lAbel === null) ? Pos() : nodes[lAbel]['Pos'];
 	setAttributes(node,{'id':label,'color':color,'position':pos,'radius':'.5'});
 	addEvents(node,color);
-	nodes[label] = {Pos:node.getAttribute('position'),Color:color};
-    //node.setAttribute('position',pathParse(nodes[label].Pos));
-    adjList[label] = [];
+	if (lAbel===null){nodes[label] = {Pos:node.getAttribute('position'),Color:color};}
+    if (lAbel===null){adjList[label] = []};
     graphEl.appendChild(node);
 }
 

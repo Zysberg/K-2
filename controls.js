@@ -35,7 +35,7 @@ document.addEventListener('keypress', event=>{
 			break;
 		case '=':
 		if (del==true){ del=false;  selectEdge();toggleCSS('del');}
-		else{addN0de();}
+		else{addN0de(null);}
 			break;
 		case '-':
 			if(del==false){del=true;toggleCSS('del');selectEdge();}

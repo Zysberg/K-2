@@ -17,6 +17,18 @@ function addEdge(An, Bn,biDir){
     return;
 }
 
+
+function addEdge(An,Bn){
+    aPos = nodes[An]['Pos'];
+    bPos = nodes[Bn]['Pos'];
+    var edgeEl = document.createElement('a-entity');
+    var pAth = pathParse(aPos)+" ,"+pathParse(bPos);
+    setAttributes(edgeEl,{'id':An+"-"+Bn,'meshline': { path:pAth,lineWidth: 10,lineWidthStyler: 1,color: '#55575b'}});
+    addSquares(aPos,bPos,edgeEl,An+"-"+Bn);
+    graphEl.appendChild(edgeEl);
+}
+
+
 function addSquares(fRom,tO,edgeEl,iD){
     var box1 = document.createElement('a-box');
     var motion = document.createElement('a-animation');

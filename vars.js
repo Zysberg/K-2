@@ -8,9 +8,9 @@ var nA = document.querySelector('#nA');
 var nB = document.querySelector('#nB');
 
 var graph = {};
-var adjList = {};
+window.adjList = {};
 var adjMatrix = {};
-var nodes = {};
+window.nodes = {};
 
 var del = false;
 var delNode = null;
