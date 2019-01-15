@@ -23,6 +23,14 @@ I/K **---** Rotate Up/Down
 
 J/L **---** Rotate Left/Right
 
+T  **---** Toggle Bidirected Edges
+
+Y **---** Toggle Axes
+
+G **---** Toggle Edge Direction Animations
+
+H **---** Toggle Ground
+
 \- **---** Enable Delete Mode
 
 = **---**  Enable Draw Mode (hit again to draw node at the position of the camera).

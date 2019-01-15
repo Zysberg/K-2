@@ -28,6 +28,7 @@ function toggleCSS(Str){
 			break;
 		case 'edgeAni':
 			document.getElementById('edgeAni').style.backgroundColor = (edgeAni) ? '#99cc00': 'white';
+			console.log(edgeAni);
 		case 'del':
 			document.getElementById('del').style.backgroundColor = (del) ? '#ff275d': 'white';
 			document.getElementById('add').style.backgroundColor = (!del) ? '#99cc00': 'white';
@@ -51,6 +52,13 @@ function toggleGrnd() {
     var axisEl = sceneEl.querySelector("a-plane");
     if (!grnd) {    axisEl.setAttribute("visible", "false");}
     else {     axisEl.setAttribute("visible", "true"); }
+}
+
+function toggleEdgeAni(){
+	for (var i = 0; i<graphEl.childNodes.length;i++){
+		if (!edgeAni&&graphEl.childNodes[i].getAttribute('id').includes('~')){console.log(graphEl.childNodes[i]); graphEl.childNodes[i].setAttribute('visible','false');}
+		else if (graphEl.childNodes[i].getAttribute('id').includes('~')){graphEl.childNodes[i].setAttribute('visible','true');}
+	}
 }
 
 

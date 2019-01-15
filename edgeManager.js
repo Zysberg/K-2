@@ -32,7 +32,9 @@ function addEdge(An,Bn){
 function addSquares(fRom,tO,edgeEl,iD){
     var box1 = document.createElement('a-box');
     var motion = document.createElement('a-animation');
-    setAttributes(box1,{'id':'~'+iD,'color':'#66FF00','height':'.125','width':'.125','depth':'.125','position':fRom});
+    var bool = 'false';
+    if (edgeAni){bool='true';}
+    setAttributes(box1,{'id':'~'+iD,'color':'#66FF00','height':'.125','width':'.125','depth':'.125','position':fRom,'visible':bool});
     setAttributes(motion,{'attribute':'position','dur':3000,'from':pathParse(fRom),'to':pathParse(tO),'repeat':'indefinite'});
     box1.appendChild(motion);
 

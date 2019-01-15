@@ -11,7 +11,7 @@ document.addEventListener('keypress', event=>{
 			grnd = !grnd; toggleCSS('grnd');toggleGrnd();
 			break;
 		case 'g':
-			edgeAni = !edgeAni; toggleCSS('edgeAni');
+			edgeAni = !edgeAni; toggleCSS('edgeAni'); toggleEdgeAni();
 			break;
 		case 'i':
 			calibrateLocalRotate(); 
