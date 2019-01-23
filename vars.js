@@ -34,7 +34,7 @@ function setAttributes(el, attrs){
 }
 
 function contains(arr, el){
-	for (var i=0;i<arr.size;i++){
+	for (var i=0;i<arr.length;i++){
 		if(arr[i]==el){return true;}
 	}
 	return false;

@@ -44,14 +44,14 @@ document.addEventListener('keypress', event=>{
 			if (!del){
 				nodeA = (document.querySelector('.HIGHLIGHT')) ? document.querySelector('.HIGHLIGHT').getAttribute('id') : null;
 				nA.innerText=nodeA;
-				if (nodeA!=null&&nodeB!=null){if(checkEdges()){addEdge(nodeA,nodeB,biDir);nodeA=null;nodeB=null;}}
+				if (nodeA!=null&&nodeB!=null){if(checkEdges()){addEdge(nodeA,nodeB,biDir,false);nodeA=null;nodeB=null;}}
 			}
 			break;
 		case ']':
 			if (!del){
 				nodeB = (document.querySelector('.HIGHLIGHT')) ? document.querySelector('.HIGHLIGHT').getAttribute('id') : null;
 				nB.innerText=nodeB;
-				if (nodeA!=null&&nodeB!=null){if(checkEdges()){addEdge(nodeA,nodeB,biDir);nodeA=null;nodeB=null;}}
+				if (nodeA!=null&&nodeB!=null){if(checkEdges()){addEdge(nodeA,nodeB,biDir,false);nodeA=null;nodeB=null;}}
 			}
 			break;
 		case '\\':

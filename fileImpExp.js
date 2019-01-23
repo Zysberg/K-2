@@ -32,7 +32,7 @@ function processGraph(){
 	for (n in nodes){
 		addN0de(n);
 		for (var g = 0; g<adjList[n].length;g++){
-				addEdge(n,adjList[n][g]);
+				addEdge(n,adjList[n][g],false,true);
 		}	
 	}
 }
